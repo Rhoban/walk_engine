@@ -35,12 +35,17 @@ set (LINKED_LIBRARIES
     ${catkin_LIBRARIES}
 )
 
+message(${LINKED_LIBRARIES})
+
+
 set (ALL_SOURCES
   src/walk_engine.cpp
   src/py_walk_engine.cpp
 )
 
 add_library(walk_engine_lib ${ALL_SOURCES})
+target_link_libraries(walk_engine_lib PUBLIC ${LINKED_LIBRARIES})
 
-pybind11_add_module(walk_engine src/python.cpp)
-target_link_libraries(walk_engine ${LINKED_LIBRARIES} ${PYTHON_LIBRARY} pybind11::module walk_engine_lib)
+pybind11_add_module(walk_engine SHARED src/python.cpp)
+target_link_libraries(walk_engine PUBLIC ${PYTHON_LIBRARY} pybind11::module walk_engine_lib)
+
