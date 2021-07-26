@@ -1,0 +1,5 @@
+deps:
+  - rhoban/robot_model#wks
+  - rhoban/utils#wks
+  - rhobandeps/eigen#wks
+
