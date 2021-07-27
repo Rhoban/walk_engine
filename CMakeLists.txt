@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.16.3)
 project(walk_engine)
 
-#set(PYBIND11_PYTHON_VERSION 3.6)
-#add_subdirectory(pybind11)
-
+if(NOT TARGET pybind11::module)
+  set(PYBIND11_PYTHON_VERSION 3.6)
+  add_subdirectory(pybind11)
+endif()
 
 set (ALL_SOURCES
   src/walk_engine.cpp
